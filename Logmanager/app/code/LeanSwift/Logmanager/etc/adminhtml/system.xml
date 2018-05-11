@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * LeanSwift Subscription Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the LeanSwift Subscription Extension License
+ * that is bundled with this package in the file LICENSE.txt located in the Connector Server.
+ *
+ * DISCLAIMER
+ *
+ * This extension is licensed and distributed by LeanSwift. Do not edit or add to this file
+ * if you wish to upgrade Extension and Connector to newer versions in the future.
+ * If you wish to customize Extension for your needs please contact LeanSwift for more
+ * information. You may not reverse engineer, decompile,
+ * or disassemble LeanSwift Connector Extension (All Versions), except and only to the extent that
+ * such activity is expressly permitted by applicable law not withstanding this limitation.
+ *
+ * @copyright   Copyright (c) 2015 LeanSwift Inc. (http://www.leanswift.com)
+ * @license     http://www.leanswift.com/license/connector-extension
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="leanswift" translate="label" sortOrder="100">
+            <label>LeanSwift Solutions</label>
+        </tab>
+        <section id="leanswift_logmanager" translate="label" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Log manager</label>
+            <tab>leanswift</tab>
+            <resource>LeanSwift_Logmanager::config_leanswift</resource>
+             <group id="log_intructions" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Instructions</label>
+                <field id="log_files_configuration" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>LeanSwift\Logmanager\Block\Adminhtml\Instructions</frontend_model>
+                    <comment><![CDATA[Delete: Select the checkbox and click the Save Config]]></comment>
+                </field>
+			</group>
+            <group id="log_manager" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Log Manager</label>
+               <field id="directory_path" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Log Files' Path</label>
+                    <frontend_model>LeanSwift\Logmanager\Block\Adminhtml\System\Config\Form\Field\LogFilePath</frontend_model>
+                    <comment><![CDATA[Enter the path to the directory containing log files.]]></comment>
+                </field>
+                <field id="flush_log_files" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Flush log files every * days</label>
+                     <comment><![CDATA[Enter the number of days for the log files to be retained.]]></comment>
+                </field>
+                <field id="log_files_configuration" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Log Files Configuration</label>
+                    <frontend_model>LeanSwift\Logmanager\Block\Adminhtml\System\Config\Form\Field\Logfileslist</frontend_model>
+				    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment><![CDATA[Enter 'Yes' in Roll Over to Zip the file after the given Maximum Size]]></comment>
+                </field>
+                <field id="cron" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Log Manager CRON</label>
+					<comment><![CDATA[Ex. every 2 min = */2 * * * * (Leave blank to disable). Rolls over and cleans the log files according to the settings.]]></comment>
+				</field>
+			</group>
+            <group id="log_viewer" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Log Viewer</label>
+                <field id="log_files_configuration" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>LeanSwift\Logmanager\Block\Adminhtml\System\Config\Form\Field\Logviewerlist</frontend_model>
+                    <comment><![CDATA[Delete: Select the checkbox and click the Save Config]]></comment>
+                </field>
+			</group>
+           
+        </section>
+    </system>
+</config>

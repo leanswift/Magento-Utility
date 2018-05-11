@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 LeanSwift. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
+    <event name="admin_system_config_changed_section_leanswift_logmanager">
+        <observer name="deleteLogFile" instance="LeanSwift\Logmanager\Observer\DeleteLog"/>
+    </event>
+</config>
