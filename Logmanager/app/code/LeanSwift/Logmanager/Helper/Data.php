@@ -27,14 +27,19 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
+     * Path to the directory containing log files
      * Const
      */
     const XML_PATH_DIRECTORY_PATH = 'leanswift_logmanager/log_manager/directory_path';
+
     /**
+     * Number of days for the log files to be retained
      * Const
      */
     const XML_PATH_FLUSH_LOGFILES_PATH = 'leanswift_logmanager/log_manager/flush_log_files';
+
     /**
+     * Configurations to archive the file after the given Maximum Size
      * Const
      */
     const XML_PATH_LOGFILES_CONFIGURATION = 'leanswift_logmanager/log_manager/log_files_configuration';
@@ -49,6 +54,12 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return $storeScope;
     }
 
+    /**
+     * @param $storeConfigName
+     * @param null $storeScope
+     * @param null $storeId
+     * @return mixed
+     */
     public function getStoreConfig($storeConfigName, $storeScope = null, $storeId = null)
     {
         $storeScope = ($storeScope) ? $storeScope : $this->getStoreScope();

@@ -31,6 +31,7 @@ class Logviewerlist extends \Magento\Config\Block\System\Config\Form\Field
      * @var logManagerHelper
      */
     protected $_logManagerHelper;
+
     /**
      * @var \Magento\Framework\Url
      */

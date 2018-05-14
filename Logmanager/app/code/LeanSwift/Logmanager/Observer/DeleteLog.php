@@ -33,6 +33,7 @@ class DeleteLog implements ObserverInterface
      * @var RequestInterface
      */
     protected $_request;
+
     /**
      * @var Data
      */
@@ -43,11 +44,7 @@ class DeleteLog implements ObserverInterface
      * @param RequestInterface $request
      * @param Data $helper
      */
-    public function __construct
-    (
-        RequestInterface $request,
-        Data $helper
-    )
+    public function __construct(RequestInterface $request, Data $helper)
     {
         $this->_request = $request;
         $this->_helper = $helper;

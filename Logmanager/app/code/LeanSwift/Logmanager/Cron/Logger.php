@@ -131,7 +131,7 @@ class Logger
                         }
 
                     }
-                    
+
                 }
             }
         }

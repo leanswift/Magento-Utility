@@ -30,14 +30,17 @@ class Logfileslist extends \Magento\Config\Block\System\Config\Form\Field\FieldA
      * @var \Magento\Framework\Data\Form\Element\Factory
      */
     protected $_elementFactory;
+
     /**
      * @var logManagerHelper
      */
     protected $_logManagerHelper;
+
     /**
      * @var \Magento\Config\Model\Config\Source\Yesno
      */
     protected $_yesNo;
+
     /**
      * @var bool
      */
