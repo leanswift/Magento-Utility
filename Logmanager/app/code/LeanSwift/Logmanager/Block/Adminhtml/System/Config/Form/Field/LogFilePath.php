@@ -1,10 +1,10 @@
 <?php
 /**
- * LeanSwift Marketplace Extension
+ * LeanSwift eConnect Extension
  *
  * NOTICE OF LICENSE
  *
- * This source file is subject to the LeanSwift Connector Extension License
+ * This source file is subject to the LeanSwift eConnect Extension License
  * that is bundled with this package in the file LICENSE.txt located in the Connector Server.
  *
  * DISCLAIMER
@@ -15,30 +15,33 @@
  * information. You may not reverse engineer, decompile,
  * or disassemble LeanSwift Connector Extension (All Versions), except and only to the extent that
  * such activity is expressly permitted by applicable law not withstanding this limitation.
- * 
- * @copyright   Copyright (C) Leanswift Solutions, Inc - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited.
- * Proprietary and confidential.
- * Terms and conditions http://leanswift.com/leanswift-eula/
- * @category LeanSwift
- * @package LeanSwift_Marketplace
+ *
+ * @copyright   Copyright (c) 2018 LeanSwift Inc. (http://www.leanswift.com)
+ * @license     http://www.leanswift.com/license/connector-extension
  */
-namespace LeanSwift\Logmanager\Block\Adminhtml\System\Config\Form\Field;
 
+namespace LeanSwift\Logmanager\Block\Adminhtml\System\Config\Form\Field;
 
 class LogFilePath extends \Magento\Config\Block\System\Config\Form\Field
 {
-	protected function _getElementHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    /**
+     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
+     * @return mixed
+     */
+    protected function _getElementHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {
-		if(!$element->getValue())
-		{
-			$element->setValue($this->_getLogFilePath());
-		} 
-		return $element->getElementHtml();
+        if (!$element->getValue()) {
+            $element->setValue($this->_getLogFilePath());
+        }
+        return $element->getElementHtml();
     }
-	
-	protected function _getLogFilePath()
-	{
-		return \LeanSwift\Logmanager\Helper\Data::getLogFilePath();
-	}
+
+    /**
+     * Returns the Log File Path
+     * @return string
+     */
+    protected function _getLogFilePath()
+    {
+        return \LeanSwift\Logmanager\Helper\Data::getLogFilePath();
+    }
 }

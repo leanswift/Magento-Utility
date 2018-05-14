@@ -1,11 +1,10 @@
-<?php 
-
+<?php
 /**
- * LeanSwift Connector Extension
+ * LeanSwift eConnect Extension
  *
  * NOTICE OF LICENSE
  *
- * This source file is subject to the LeanSwift Connector Extension License
+ * This source file is subject to the LeanSwift eConnect Extension License
  * that is bundled with this package in the file LICENSE.txt located in the Connector Server.
  *
  * DISCLAIMER
@@ -17,10 +16,8 @@
  * or disassemble LeanSwift Connector Extension (All Versions), except and only to the extent that
  * such activity is expressly permitted by applicable law not withstanding this limitation.
  *
- * @copyright   Copyright (C) Leanswift Solutions, Inc - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited.
- * Proprietary and confidential.
- * Terms and conditions http://leanswift.com/leanswift-eula/
+ * @copyright   Copyright (c) 2018 LeanSwift Inc. (http://www.leanswift.com)
+ * @license     http://www.leanswift.com/license/connector-extension
  */
 
 namespace LeanSwift\Logmanager\Observer;
@@ -32,33 +29,45 @@ use LeanSwift\Logmanager\Helper\Data;
 
 class DeleteLog implements ObserverInterface
 {
-	protected $_request;
-	protected $_helper;
-	
-	public function __construct
-	(
-		RequestInterface $request,
-		Data $helper
-	){
-		$this->_request = $request;
-		$this->_helper = $helper;
-	}
-	
-	public function execute(Observer $observer)
+    /**
+     * @var RequestInterface
+     */
+    protected $_request;
+    /**
+     * @var Data
+     */
+    protected $_helper;
+
+    /**
+     * DeleteLog constructor.
+     * @param RequestInterface $request
+     * @param Data $helper
+     */
+    public function __construct
+    (
+        RequestInterface $request,
+        Data $helper
+    )
     {
-		$logFiles = $this->_request->getParam('logFiles');
-		if(!empty($logFiles))
-		{
-			$filePath = $this->_helper->getLogFilesPath();
-			$dir = opendir($filePath);
-			while (false !== ($logFile = readdir($dir)))
-			{
-				if(strpos($logFile, 'log') != false && in_array($logFile,$logFiles))
-				{
-					unlink($filePath.DIRECTORY_SEPARATOR.$logFile);
-				}
-			}
-			closedir($dir);
-		}
-	}
+        $this->_request = $request;
+        $this->_helper = $helper;
+    }
+
+    /**
+     * @param Observer $observer
+     */
+    public function execute(Observer $observer)
+    {
+        $logFiles = $this->_request->getParam('logFiles');
+        if (!empty($logFiles)) {
+            $filePath = $this->_helper->getLogFilesPath();
+            $dir = opendir($filePath);
+            while (false !== ($logFile = readdir($dir))) {
+                if (strpos($logFile, 'log') != false && in_array($logFile, $logFiles)) {
+                    unlink($filePath . DIRECTORY_SEPARATOR . $logFile);
+                }
+            }
+            closedir($dir);
+        }
+    }
 }  
