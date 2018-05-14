@@ -66,23 +66,30 @@ class Logger
         $filePath = $this->getHelper()->getLogFilesPath();
         $listOfLogs = $this->getLogFiles();
         $noOfDays = $this->getHelper()->getNoOfDays();
+
         if (!empty($noOfDays)) {
             if ($dir = opendir($filePath)) {
                 while (false !== ($logFile = readdir($dir))) {
                     chdir($filePath);
+
                     if (strpos($logFile, 'log') != false) {
+
                         if (strtoupper(strpos($os, 'win')) != false)
                             $fileTime = filectime($logFile);
                         else
                             $fileTime = filemtime($logFile);
+
                         if ((time() - $fileTime) >= $noOfDays * 24 * 60 * 60) {
                             unlink($logFile);
                         }
+
                     }
+
                 }
                 closedir($dir);
             }
         }
+
     }
 
     /**
@@ -92,24 +99,29 @@ class Logger
     {
         $filePath = $this->getHelper()->getLogFilesPath();
         $logFileConfigurations = $this->getHelper()->getLogFilesConfiguration();
+
         //change the current working directory to the log located folder
         if (is_array($logFileConfigurations)) {
             foreach ($logFileConfigurations as $configuration) {
                 if ($dir = opendir($filePath)) {
                     $file = $configuration['log_file'];
+
                     if (file_exists($file)) {
                         $configuredSize = $configuration['max_size'];
                         $isRollOver = $configuration['roll_over'];
                         $filesize = (filesize($file) / (1024));// bytes to KB
+
                         if ($isRollOver && ($filesize >= $configuredSize)) {
                             chdir($filePath);
                             try {
                                 $zip = new ZipArchive();
                                 $fileName = $configuration['log_file'] . date("d-m-YH:i:s") . '.zip';
                                 $fileName = str_replace(" ", "", $fileName);
+
                                 if ($zip->open($fileName, ZIPARCHIVE::CREATE) === false) {
                                     die ("An error occurred creating your ZIP file.");
                                 }
+
                                 $zip->addFile($file);
                                 $zip->close();
                                 unlink($file);
@@ -117,7 +129,9 @@ class Logger
                                 echo $e->getMessage();
                             }
                         }
+
                     }
+                    
                 }
             }
         }

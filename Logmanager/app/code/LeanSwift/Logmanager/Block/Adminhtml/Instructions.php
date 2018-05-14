@@ -75,6 +75,7 @@ class Instructions extends \Magento\Config\Block\System\Config\Form\Field
         $html .= __("If the files are still not accessible, set 'Allow from all' instead of 'Deny from all' in the .htaccess file under 'var' directory.");
         $html .= '</li>';
         $html .= '</ul>';
+
         return $html;
     }
 }

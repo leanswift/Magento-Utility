@@ -62,11 +62,13 @@ class DeleteLog implements ObserverInterface
         if (!empty($logFiles)) {
             $filePath = $this->_helper->getLogFilesPath();
             $dir = opendir($filePath);
+
             while (false !== ($logFile = readdir($dir))) {
                 if (strpos($logFile, 'log') != false && in_array($logFile, $logFiles)) {
                     unlink($filePath . DIRECTORY_SEPARATOR . $logFile);
                 }
             }
+
             closedir($dir);
         }
     }

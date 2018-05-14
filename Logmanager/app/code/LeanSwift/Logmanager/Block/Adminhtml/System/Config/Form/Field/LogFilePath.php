@@ -33,6 +33,7 @@ class LogFilePath extends \Magento\Config\Block\System\Config\Form\Field
         if (!$element->getValue()) {
             $element->setValue($this->_getLogFilePath());
         }
+
         return $element->getElementHtml();
     }
 

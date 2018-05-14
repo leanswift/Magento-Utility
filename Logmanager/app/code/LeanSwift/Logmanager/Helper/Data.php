@@ -75,6 +75,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             chdir($path);
             $list = scandir($path);
         }
+
         return $list;
     }
 
@@ -98,6 +99,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             $fileConfigArray = unserialize($fileConfigurations);
             return $fileConfigArray;
         }
+
         // no mapping or default is set up
         return null;
     }

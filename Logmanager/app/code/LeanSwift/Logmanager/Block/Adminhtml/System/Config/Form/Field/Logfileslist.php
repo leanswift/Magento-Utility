@@ -91,6 +91,7 @@ class Logfileslist extends \Magento\Config\Block\System\Config\Form\Field\FieldA
                     break;
             }
         }
+
         return parent::renderCellTemplate($columnName);
     }
 
@@ -116,6 +117,7 @@ class Logfileslist extends \Magento\Config\Block\System\Config\Form\Field\FieldA
         } else {
             $element->setStyle('width:300px');
         }
+
         return str_replace("\n", '', $element->getElementHtml());
     }
 
@@ -136,6 +138,7 @@ class Logfileslist extends \Magento\Config\Block\System\Config\Form\Field\FieldA
         } else {
             $options[] = ['value' => '', 'label' => ('--Connection Error--')];
         }
+
         return $this->_getSelectElementHtml($columnName, $options);
     }
 

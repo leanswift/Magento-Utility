@@ -70,6 +70,7 @@ class Logviewerlist extends \Magento\Config\Block\System\Config\Form\Field
     {
         $logFiles = $this->getLogFiles();
         $getLogUrl = $this->getLogFilesPath();
+
         return $this->__getHtml($logFiles, $getLogUrl);
     }
 
@@ -101,6 +102,7 @@ class Logviewerlist extends \Magento\Config\Block\System\Config\Form\Field
             $i = 1;
             foreach ($logFiles as $_logFile) {
                 $isAccesible = '';
+
                 if (!is_null($_logFile) && (strpos($_logFile, 'log') != false) && (strpos($_logFile, 'zip') != true)) {
                     $logUrl = $this->getLogUrl($_logFile);
                     $rendered .= '<tr class="logviewlist" id="addRow-' . $i . '">';
@@ -119,8 +121,10 @@ class Logviewerlist extends \Magento\Config\Block\System\Config\Form\Field
                     $rendered .= '</tr>';
                     $i++;
                 }
+
             }
         }
+
         return $rendered;
     }
 
