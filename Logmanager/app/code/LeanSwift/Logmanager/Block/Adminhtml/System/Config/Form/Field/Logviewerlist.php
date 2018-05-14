@@ -113,7 +113,6 @@ class Logviewerlist extends \Magento\Config\Block\System\Config\Form\Field
                     $rendered .= '<td>';
                     $rendered .= '<a href="' . $logUrl . '"  download>Download</a>';
                     $rendered .= '</td>';
-
                     $rendered .= '<td>';
                     $rendered .= '<input type="checkbox" name="logFiles[]" value="' . $_logFile . '"> Delete';
                     $rendered .= '</td>';
@@ -122,7 +121,6 @@ class Logviewerlist extends \Magento\Config\Block\System\Config\Form\Field
                 }
             }
         }
-        //$rendered .= '<p class="note"><span>'.__(sprintf('The files present in the path <b>%s</b> be authorized to view and download', $getLogUrl)).'</span></p>';
         return $rendered;
     }
 
