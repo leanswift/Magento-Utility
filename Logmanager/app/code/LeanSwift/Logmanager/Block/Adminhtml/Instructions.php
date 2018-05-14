@@ -47,7 +47,6 @@ class Instructions extends \Magento\Config\Block\System\Config\Form\Field
     {
         $this->_logManagerHelper = $logManagerHelper;
         parent::__construct($context, $data);
-
     }
 
     /**
