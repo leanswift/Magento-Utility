@@ -124,4 +124,36 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $configList = DirectoryList::getDefaultConfig();
         return BP . DIRECTORY_SEPARATOR . $configList[DirectoryList::VAR_DIR]['path'] . DIRECTORY_SEPARATOR . DirectoryList::LOG;
     }
+
+    /**
+     * @return array
+     */
+    public function lsLogFiles()
+    {
+        return array('LeanSwift.log', 'Product.log', 'OrderSync.log', 'CustomerSync.log');
+    }
+
+    /**
+     * @return array
+     */
+    public function coreLogFiles()
+    {
+        return array('system.log', 'exception.log', 'debug.log');
+    }
+
+    /**
+     * @param $type
+     * @param $log
+     * @return bool
+     */
+    public function checkType($type, $log)
+    {
+        $logFiles = array_merge($this->lsLogFiles(), $this->coreLogFiles());
+        $logFiles = ($type == "ls") ? $this->lsLogFiles() : (($type == "system") ? $this->coreLogFiles() : $logFiles);
+        if(in_array($log, $logFiles)){
+            return true;
+        }
+
+        return false;
+    }
 }  
