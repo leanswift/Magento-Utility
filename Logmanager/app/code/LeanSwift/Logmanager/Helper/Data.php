@@ -30,19 +30,19 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * Path to the directory containing log files
      * Const
      */
-    const XML_PATH_DIRECTORY_PATH = 'leanswift_logmanager/log_manager/directory_path';
+    const XML_PATH_DIRECTORY_PATH = 'leanswift_logmanager/logManager/directoryPath';
 
     /**
      * Number of days for the log files to be retained
      * Const
      */
-    const XML_PATH_FLUSH_LOGFILES_PATH = 'leanswift_logmanager/log_manager/flush_log_files';
+    const XML_PATH_FLUSH_LOGFILES_PATH = 'leanswift_logmanager/logManager/flushLogFiles';
 
     /**
      * Configurations to archive the file after the given Maximum Size
      * Const
      */
-    const XML_PATH_LOGFILES_CONFIGURATION = 'leanswift_logmanager/log_manager/log_files_configuration';
+    const XML_PATH_LOGFILES_CONFIGURATION = 'leanswift_logmanager/logManager/logFilesConfiguration';
 
     /**
      * Returns the scope of the Store
@@ -150,7 +150,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         $logFiles = array_merge($this->lsLogFiles(), $this->coreLogFiles());
         $logFiles = ($type == "ls") ? $this->lsLogFiles() : (($type == "system") ? $this->coreLogFiles() : $logFiles);
-        if(in_array($log, $logFiles)){
+        if (in_array($log, $logFiles)) {
             return true;
         }
 
