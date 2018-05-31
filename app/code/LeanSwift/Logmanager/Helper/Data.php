@@ -130,7 +130,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function lsLogFiles()
     {
-        return array('LeanSwift.log', 'Product.log', 'OrderSync.log', 'CustomerSync.log');
+        return array('LeanSwift.log', 'ProductSync.log', 'OrderSync.log', 'CustomerSync.log');
     }
 
     /**
