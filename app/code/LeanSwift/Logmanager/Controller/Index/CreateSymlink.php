@@ -64,7 +64,7 @@ class CreateSymlink extends Action
     {
         $type = $file = "";
         $logType = $this->getRequest()->getParams();
-        if(!empty($logType) && array_key_exists('type', $logType)){
+        if (!empty($logType) && array_key_exists('type', $logType)) {
             $type = $logType['type']; // $type could be "ls" or "system"
         }
         $configList = DirectoryList::getDefaultConfig();
@@ -85,19 +85,24 @@ class CreateSymlink extends Action
                     $fileExtension = $pathInfo['extension'];
                     $baseFileName = $pathInfo['filename'];
 
-                    if($fileExtension == "zip"){
-                        $name = explode(".log",$baseFileName);
+                    if ($fileExtension == "zip") {
+                        $name = explode(".log", $baseFileName);
                         $logFileName = $name[0].'.log';
                     }
 
                     $checkLog = $this->_helper->checkType($type, $logFileName);
-                    if($checkLog){
+                    if ($checkLog) {
                         $file = BP . DIRECTORY_SEPARATOR . $configList[DirectoryList::ROOT]['path'];
                         try {
-                            $target = $filePath. DIRECTORY_SEPARATOR . $logFileName;
+                            $target = $filePath . DIRECTORY_SEPARATOR . $logFileName;
                             $link = $file . $logFileName;
-                            //Creating a symlink in root path
-                            symlink($target, $link);
+
+                            //Checking whether Target file exists and log file is not a symlink already
+                            if (file_exists($target) && !is_link($logFileName)) {
+
+                                //Creating a symlink in root path
+                                symlink($target, $link);
+                            }
                         } catch (\Exception $e) {
                             echo $e->getMessage();
                         }
