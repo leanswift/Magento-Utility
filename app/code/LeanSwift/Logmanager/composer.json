@@ -2,10 +2,9 @@
   "name": "leanswift/module-logmanager",
   "description": "N/A",
   "require": {
-    "php": "~5.5.0|~5.6.0|~7.0.0"
+    "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0"
   },
   "type": "magento2-module",
-  "version": "100.0.0",
   "license": [
     "OSL-3.0",
     "AFL-3.0"
