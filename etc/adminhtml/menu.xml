@@ -23,6 +23,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-     <add id="LeanSwift_Logmanager::logmanager_config" title="Log manager" module="LeanSwift_Logmanager" sortOrder="110" parent="LeanSwift_Econnect::leanswift" action="adminhtml/system_config/edit/section/leanswift_logmanager" resource="LeanSwift_Logmanager::logmanager_config"/>
+     <add id="LeanSwift_Logmanager::logmanager_config" title="Log Manager" module="LeanSwift_Logmanager" sortOrder="110" parent="LeanSwift_Econnect::leanswift" action="adminhtml/system_config/edit/section/leanswift_logmanager" resource="LeanSwift_Logmanager::logmanager_config"/>
     </menu>
 </config>
